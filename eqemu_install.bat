@@ -86,6 +86,12 @@ IF NOT EXIST "eqemu_config.xml" (
 
 perl eqemu_update.pl installer
 
+REM netsh advfirewall firewall add rule name="EQEmu World (9000) TCP" dir=in action=allow protocol=TCP localport=9000
+REM netsh advfirewall firewall add rule name="EQEmu Zones (7000-7500) TCP" dir=in action=allow protocol=TCP localport=7000-7500
+REM netsh advfirewall firewall add rule name="EQEmu World (9000) UDP" dir=in action=allow protocol=UDP localport=9000
+REM netsh advfirewall firewall add rule name="EQEmu Zones (7000-7500) UDP" dir=in action=allow protocol=UDP localport=7000-7500
+
+
 pause
 
 GOTO :EXIT
