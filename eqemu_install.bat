@@ -34,8 +34,6 @@ echo #::: EQEmulator is not associated or affiliated in any way with Daybreak Ga
 echo #########################################################
 
 SET has_winrar=0
-SET has_perl=0
-SET has_mysql=0
 
 IF EXIST "%ProgramFiles(x86)%\WinRAR" (
 	SET has_winrar=1
@@ -86,13 +84,6 @@ IF NOT EXIST "eqemu_config.xml" (
 
 C:\Perl\bin\perl.exe eqemu_update.pl installer
 
-REM netsh advfirewall firewall show rule name=all
-REM netsh advfirewall firewall add rule name="EQEmu World (9000) TCP" dir=in action=allow protocol=TCP localport=9000
-REM netsh advfirewall firewall add rule name="EQEmu Zones (7000-7500) TCP" dir=in action=allow protocol=TCP localport=7000-7500
-REM netsh advfirewall firewall add rule name="EQEmu World (9000) UDP" dir=in action=allow protocol=UDP localport=9000
-REM netsh advfirewall firewall add rule name="EQEmu Zones (7000-7500) UDP" dir=in action=allow protocol=UDP localport=7000-7500
-
-
 pause
 
 GOTO :EXIT
@@ -109,7 +100,7 @@ GOTO :EXIT
 :INSTALL_MARIADB
 	echo Installing MariaDB (Root Password: eqemu) LOADING... PLEASE WAIT...
 	msiexec /i mariadb-10.0.21-winx64.msi SERVICENAME=MySQL PORT=3306 PASSWORD=eqemu /qn
-	setx path "%path%;C:\Program Files\MariaDB 10.0\bin"
+	setx /M path "%path%;C:\Program Files\MariaDB 10.0\bin"
 	del mariadb-10.0.21-winx64.msi
 	
 	GOTO :MAIN
