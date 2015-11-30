@@ -46,7 +46,7 @@ IF EXIST "%ProgramFiles%\WinRAR" (
 IF %has_winrar% == 0 (
 	echo Installing WinRAR...
 	WinRARSetup.exe /S
-	pause
+	del WinRARSetup.exe
 )
 
 echo :
@@ -71,18 +71,27 @@ IF NOT EXIST "C:\Perl\bin" (
 	GOTO :INSTALL_PERL
 )
 
+
 IF NOT EXIST "C:\Program Files\MariaDB 10.0" (
 	GOTO :INSTALL_MARIADB
 )
 
+:GET_EQEMU_UPDATE
 IF NOT EXIST "eqemu_update.pl" (
 	C:\Perl\bin\perl.exe -MLWP::UserAgent -e "require LWP::UserAgent;  my $ua = LWP::UserAgent->new; $ua->timeout(10); $ua->env_proxy; my $response = $ua->get('https://raw.githubusercontent.com/EQEmu/Server/master/utils/scripts/eqemu_update.pl'); if ($response->is_success){ open(FILE, '> eqemu_update.pl'); print FILE $response->decoded_content; close(FILE); }
 )
+IF NOT EXIST "eqemu_update.pl" GOTO GET_EQEMU_UPDATE
+
+:GET_EQEMU_CONFIG
 IF NOT EXIST "eqemu_config.xml" (
 	C:\Perl\bin\perl.exe -MLWP::UserAgent -e "require LWP::UserAgent;  my $ua = LWP::UserAgent->new; $ua->timeout(10); $ua->env_proxy; my $response = $ua->get('https://raw.githubusercontent.com/Akkadius/EQEmuInstall/master/eqemu_config.xml'); if ($response->is_success){ open(FILE, '> eqemu_config.xml'); print FILE $response->decoded_content; close(FILE); }
 )
+IF NOT EXIST "eqemu_config.xml" GOTO GET_EQEMU_UPDATE
 
-vcredist_x86.exe /q /norestart
+IF EXIST "vcredist_x86.exe" (
+	vcredist_x86.exe /passive /norestart
+	del vcredist_x86.exe
+)
 
 C:\Perl\bin\perl.exe eqemu_update.pl installer
 
@@ -96,6 +105,8 @@ GOTO :EXIT
 	"C:\Program Files (x86)\WinRAR\unrar" x -o- Perl.rar C:\
 	del ActivePerl-5.12.3.1204-MSWin32-x86-294330.msi
 	del Perl.rar
+	SET PATH=%path%;C:\Perl\site\bin
+	SET PATH=%path%;C:\Perl\bin
 	
 	GOTO :MAIN
 	
@@ -103,6 +114,7 @@ GOTO :EXIT
 	echo Installing MariaDB (Root Password: eqemu) LOADING... PLEASE WAIT...
 	msiexec /i mariadb-10.0.21-winx64.msi SERVICENAME=MySQL PORT=3306 PASSWORD=eqemu /qn
 	setx /M path "%path%;C:\Program Files\MariaDB 10.0\bin"
+	SET PATH=%path%;C:\Program Files\MariaDB 10.0\bin
 	del mariadb-10.0.21-winx64.msi
 	
 	GOTO :MAIN
