@@ -78,19 +78,20 @@ IF NOT EXIST "C:\Program Files\MariaDB 10.0" (
 )
 
 IF NOT EXIST "eqemu_update.pl" (
-	perl -MLWP::UserAgent -e "require LWP::UserAgent;  my $ua = LWP::UserAgent->new; $ua->timeout(10); $ua->env_proxy; my $response = $ua->get('https://raw.githubusercontent.com/EQEmu/Server/master/utils/scripts/eqemu_update.pl'); if ($response->is_success){ open(FILE, '> eqemu_update.pl'); print FILE $response->decoded_content; close(FILE); }
+	C:\Perl\bin\perl.exe -MLWP::UserAgent -e "require LWP::UserAgent;  my $ua = LWP::UserAgent->new; $ua->timeout(10); $ua->env_proxy; my $response = $ua->get('https://raw.githubusercontent.com/EQEmu/Server/master/utils/scripts/eqemu_update.pl'); if ($response->is_success){ open(FILE, '> eqemu_update.pl'); print FILE $response->decoded_content; close(FILE); }
 )
 IF NOT EXIST "eqemu_config.xml" (
-	perl -MLWP::UserAgent -e "require LWP::UserAgent;  my $ua = LWP::UserAgent->new; $ua->timeout(10); $ua->env_proxy; my $response = $ua->get('https://raw.githubusercontent.com/Akkadius/EQEmuInstall/master/eqemu_config.xml'); if ($response->is_success){ open(FILE, '> eqemu_config.xml'); print FILE $response->decoded_content; close(FILE); }
+	C:\Perl\bin\perl.exe -MLWP::UserAgent -e "require LWP::UserAgent;  my $ua = LWP::UserAgent->new; $ua->timeout(10); $ua->env_proxy; my $response = $ua->get('https://raw.githubusercontent.com/Akkadius/EQEmuInstall/master/eqemu_config.xml'); if ($response->is_success){ open(FILE, '> eqemu_config.xml'); print FILE $response->decoded_content; close(FILE); }
 )
 
-perl eqemu_update.pl installer
+C:\Perl\bin\perl.exe eqemu_update.pl installer
 
 REM netsh advfirewall firewall show rule name=all
 REM netsh advfirewall firewall add rule name="EQEmu World (9000) TCP" dir=in action=allow protocol=TCP localport=9000
 REM netsh advfirewall firewall add rule name="EQEmu Zones (7000-7500) TCP" dir=in action=allow protocol=TCP localport=7000-7500
 REM netsh advfirewall firewall add rule name="EQEmu World (9000) UDP" dir=in action=allow protocol=UDP localport=9000
 REM netsh advfirewall firewall add rule name="EQEmu Zones (7000-7500) UDP" dir=in action=allow protocol=UDP localport=7000-7500
+
 
 pause
 
