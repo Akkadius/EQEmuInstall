@@ -82,6 +82,8 @@ IF NOT EXIST "eqemu_config.xml" (
 	C:\Perl\bin\perl.exe -MLWP::UserAgent -e "require LWP::UserAgent;  my $ua = LWP::UserAgent->new; $ua->timeout(10); $ua->env_proxy; my $response = $ua->get('https://raw.githubusercontent.com/Akkadius/EQEmuInstall/master/eqemu_config.xml'); if ($response->is_success){ open(FILE, '> eqemu_config.xml'); print FILE $response->decoded_content; close(FILE); }
 )
 
+vcredist_x86.exe /q /norestart
+
 C:\Perl\bin\perl.exe eqemu_update.pl installer
 
 pause
