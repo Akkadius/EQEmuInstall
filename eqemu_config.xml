@@ -10,12 +10,19 @@
 <!-- <localaddress>127.0.0.1</localaddress> -->
 
 <!-- Loginserver information. DO NOT EDIT -->
-<loginserver>
+<loginserver1>
 	<host>login.eqemulator.net</host>
 	<port>5998</port>
 	<account></account>
 	<password></password>
-</loginserver>
+</loginserver1>
+<loginserver2>
+	<host>127.0.0.1</host>
+	<port>5998</port>
+	<account></account>
+	<password></password>
+</loginserver2>
+
 
 <!-- Server status. Default is unlocked DO NOT EDIT RIGHT NOW -->
 <!--<locked/>-->
