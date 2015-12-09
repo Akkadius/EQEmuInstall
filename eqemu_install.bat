@@ -9,7 +9,7 @@ goto check_Permissions
     if %errorLevel% == 0 (
         echo Success: Administrative permissions confirmed.
 		
-		GOTO :MAIN
+		GOTO :PRE_MAIN
     ) else (
         echo Failed: Run eqemu_install.bat as Administrator Right click - Run as Administrator
 		pause
@@ -18,9 +18,7 @@ goto check_Permissions
 
 pause
 
-:MAIN
-
-cd "%~dp0" 
+:PRE_MAIN
 
 echo #########################################################
 echo #::: EverQuest Emulator Modular Installer
@@ -32,23 +30,6 @@ echo #:::
 echo #::: Everquest is a registered trademark of Daybreak Game Company LLC.
 echo #::: EQEmulator is not associated or affiliated in any way with Daybreak Game Company LLC.
 echo #########################################################
-
-SET has_winrar=0
-
-IF EXIST "%ProgramFiles(x86)%\WinRAR" (
-	SET has_winrar=1
-	REM echo WinRAR Exists... 32-Bit
-)
-IF EXIST "%ProgramFiles%\WinRAR" (
-	SET has_winrar=1
-	REM echo WinRAR Exists... 64-Bit
-)
-IF %has_winrar% == 0 (
-	echo Installing WinRAR...
-	WinRARSetup.exe /S
-	del WinRARSetup.exe
-)
-
 echo :
 echo #########################################################
 echo #::: To be installed:
@@ -66,6 +47,26 @@ echo - Maps (Latest V2) formats are loaded
 echo - New Path files are loaded
 echo - Optimized server binaries
 echo #########################################################
+
+:MAIN
+
+cd "%~dp0" 
+
+SET has_winrar=0
+
+IF EXIST "%ProgramFiles(x86)%\WinRAR" (
+	SET has_winrar=1
+	REM echo WinRAR Exists... 32-Bit
+)
+IF EXIST "%ProgramFiles%\WinRAR" (
+	SET has_winrar=1
+	REM echo WinRAR Exists... 64-Bit
+)
+IF %has_winrar% == 0 (
+	echo Installing WinRAR...
+	WinRARSetup.exe /S
+	del WinRARSetup.exe
+)
 
 IF NOT EXIST "C:\Perl\bin" (
 	GOTO :INSTALL_PERL
@@ -107,6 +108,9 @@ GOTO :EXIT
 	del Perl.rar
 	SET PATH=%path%;C:\Perl\site\bin
 	SET PATH=%path%;C:\Perl\bin
+	
+	assoc .pl=Perl
+	ftype Perl="C:\Perl\bin\perl.exe" %%1 %%* 
 	
 	GOTO :MAIN
 	
