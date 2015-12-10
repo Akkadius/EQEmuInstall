@@ -3,10 +3,5 @@ cls
 echo *** CLEARING OLD LOGS ***
 del "logs/zone/" /q
 shared_memory.exe
-start world.exe
-echo waiting for the world to finish before starting zone...
-ping -n 10 127.0.0.1 > nul
-start queryserv.exe
-start ucs.exe
-start eqlaunch.exe zone
+start perl win_server_launcher.pl zones="60" zone_background_start loginserver kill_all_on_start
 exit
