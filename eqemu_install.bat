@@ -1,5 +1,5 @@
 @echo off
-REM if not "%1" == "max" start /MAX cmd /c %0 max & exit/b
+if not "%1" == "max" start /MAX cmd /c %0 max & exit/b
 
 goto check_Permissions
 
@@ -27,8 +27,11 @@ echo #:::
 echo #::: EQEmulator Server Software is developed and maintained 
 echo #:::	by the EQEmulator Developement team
 echo #:::
-echo #::: Everquest is a registered trademark of Daybreak Game Company LLC.
-echo #::: EQEmulator is not associated or affiliated in any way with Daybreak Game Company LLC.
+echo #::: Everquest is a registered trademark
+echo #::: Daybreak Game Company LLC.
+echo #::: 
+echo #::: EQEmulator is not associated or 
+echo #::: affiliated in any way with Daybreak Game Company LLC.
 echo #########################################################
 echo :
 echo #########################################################
