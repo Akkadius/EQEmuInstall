@@ -35,13 +35,13 @@ while($ARGV[$n]){
 }
 
 if($kill_all_on_start){
-	system("taskkill /IM queryserv.exe /F > nul");
-	system("taskkill /IM ucs.exe /F > nul");
-	system("taskkill /IM eqlaunch.exe /F > nul");
-	system("taskkill /IM zone.exe /F > nul");
-	system("taskkill /IM world.exe /F > nul");
-	system("taskkill /IM shared_memory.exe /F > nul");
-	system("taskkill /IM loginserver.exe /F > nul");
+	system("start taskkill /IM queryserv.exe /F > nul");
+	system("start taskkill /IM ucs.exe /F > nul");
+	system("start taskkill /IM eqlaunch.exe /F > nul");
+	system("start taskkill /IM zone.exe /F > nul");
+	system("start taskkill /IM world.exe /F > nul");
+	system("start taskkill /IM shared_memory.exe /F > nul");
+	system("start taskkill /IM loginserver.exe /F > nul");
 }
 
 if(!$zones_to_launch){
