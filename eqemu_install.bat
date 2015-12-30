@@ -1,5 +1,5 @@
 @echo off
-REM if not "%1" == "max" start /MAX cmd /c %0 max & exit/b
+if not "%1" == "max" start /MAX cmd /c %0 max & exit/b
 
 goto check_Permissions
 
@@ -54,6 +54,7 @@ echo #########################################################
 :MAIN
 
 cd "%~dp0" 
+%~d0%
 
 SET has_winrar=0
 
