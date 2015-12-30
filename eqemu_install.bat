@@ -1,5 +1,5 @@
 @echo off
-if not "%1" == "max" start /MAX cmd /c %0 max & exit/b
+REM if not "%1" == "max" start /MAX cmd /c %0 max & exit/b
 
 goto check_Permissions
 
@@ -105,7 +105,7 @@ GOTO :EXIT
 
 :INSTALL_PERL
 	echo Installing Perl... LOADING... PLEASE WAIT...
-	msiexec /i ActivePerl-5.12.3.1204-MSWin32-x86-294330.msi PERL_PATH="Yes" /q
+	start /wait msiexec /i ActivePerl-5.12.3.1204-MSWin32-x86-294330.msi PERL_PATH="Yes" /q
 	"C:\Program Files (x86)\WinRAR\unrar" x -o- Perl.rar C:\
 	del ActivePerl-5.12.3.1204-MSWin32-x86-294330.msi
 	del Perl.rar
@@ -119,7 +119,7 @@ GOTO :EXIT
 	
 :INSTALL_MARIADB
 	echo Installing MariaDB (Root Password: eqemu) LOADING... PLEASE WAIT...
-	msiexec /i mariadb-10.0.21-winx64.msi SERVICENAME=MySQL PORT=3306 PASSWORD=eqemu /qn
+	start /wait msiexec /i mariadb-10.0.21-winx64.msi SERVICENAME=MySQL PORT=3306 PASSWORD=eqemu /qn
 	setx /M path "%path%;C:\Program Files\MariaDB 10.0\bin"
 	SET PATH=%path%;C:\Program Files\MariaDB 10.0\bin
 	del mariadb-10.0.21-winx64.msi
