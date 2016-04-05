@@ -8,11 +8,15 @@ print "Akka's Windows Server Launcher\n";
 # zones="40" = specified x number of zones to launch
 # loginserver = Launch loginserver
 # kill_all_on_start = Kills any running processes on start
+# no_query_serv - disable running of queryserv
 
 while($ARGV[$n]){
     print $n . ': ' . $ARGV[$n] . "\n" if $Debug;
     if($ARGV[$n] eq "kill_all_on_start"){
 		$kill_all_on_start = 1;
+	}
+    if($ARGV[$n] eq "no_query_serv"){
+		$no_query_serv = 1;
 	}
     if($ARGV[$n] eq "loginserver"){
 		$use_loginserver = 1;
@@ -132,9 +136,11 @@ while(1){
 		usleep(100);
 	}
 	#::: Queryserv Process
-	for($i = $queryserv_process_count; $i < 1; $i++){ 
-		system("start " . $background_start . " queryserv.exe " . $pipe_redirection); 
-		print_status();
+	if($no_query_serv != 1){
+		for($i = $queryserv_process_count; $i < 1; $i++){ 
+			system("start " . $background_start . " queryserv.exe " . $pipe_redirection); 
+			print_status();
+		}
 	}
 	#::: UCS Process
 	for($i = $ucs_process_count; $i < 1; $i++){ 
@@ -145,4 +151,3 @@ while(1){
 	
 	sleep(1);
 }
-
