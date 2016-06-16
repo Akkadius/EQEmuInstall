@@ -2,8 +2,8 @@
 <server>
 	<world>
 		<!-- Set the shortname to ONE word. The longname is what shows up on server list -->
-		<shortname>Akka's Server Installer (Change Name)</shortname>
-		<longname>Akka's Server Installer (Change Name)</longname>
+		<shortname>Akkas PEQ Installer</shortname>
+		<longname>Akkas PEQ Installer</longname>
 
 		<!-- DO NOT EDIT ANY LINES BETWEEN HERE AND THE DATABASE SECTION -->
 		<!-- <address>127.0.0.1</address> -->
