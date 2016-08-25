@@ -17,28 +17,28 @@ $print_status_once = 0;
 
 while($ARGV[$n]){
     print $n . ': ' . $ARGV[$n] . "\n" if $Debug;
-    if($ARGV[$n] eq "silent_launcher"){
+	if($ARGV[$n] eq "silent_launcher"){
 		$silent_launcher = 1;
 	}
-    if($ARGV[$n] eq "kill_server"){
+	if($ARGV[$n] eq "kill_server"){
 		$kill_server = 1;
 		print "Shutting server down...\n";
 	}
-    if($ARGV[$n] eq "no_query_serv"){
+	if($ARGV[$n] eq "no_query_serv"){
 		$no_query_serv = 1;
 	}
-    if($ARGV[$n] eq "loginserver"){
+	if($ARGV[$n] eq "loginserver"){
 		$use_loginserver = 1;
 		print "Loginserver set to run...\n";
 	}
-    if($ARGV[$n] eq "print_status_once"){
+	if($ARGV[$n] eq "print_status_once"){
 		$print_status_once = 1;
 	}
-    if($ARGV[$n]=~/zones=/i){
-        my @data = split('=', $ARGV[$n]);
-        print "Zones to launch: " . $data[1] . "\n";
+	if($ARGV[$n]=~/zones=/i){
+		my @data = split('=', $ARGV[$n]);
+		print "Zones to launch: " . $data[1] . "\n";
 		$zones_to_launch = $data[1];
-    }
+	}
     $n++;
 }
 
