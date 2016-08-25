@@ -1,2 +1,2 @@
 # EQEmuInstall 
-- A basic repository for serving basic EQEmulator Server install needs
+- A repository for serving basic EQEmulator Server install needs
