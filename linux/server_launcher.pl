@@ -11,6 +11,7 @@ print "\nAkka's Linux Server Launcher\n";
 # silent_launcher - does not send server status updates to console
 # print_status_once - prints server status once and exits
 # kill_server - kills server processes and exits
+# no_status_update - Doesn't print a repeated server status update
 
 $kill_server = 0;
 $print_status_once = 0;
@@ -33,6 +34,9 @@ while($ARGV[$n]){
 	}
 	if($ARGV[$n] eq "print_status_once"){
 		$print_status_once = 1;
+	}
+	if($ARGV[$n] eq "no_status_update"){
+		$no_status_update = 1;
 	}
 	if($ARGV[$n]=~/zones=/i){
 		my @data = split('=', $ARGV[$n]);
@@ -112,7 +116,7 @@ else{
 );
 
 sub print_status{
-	if($silent_launcher){
+	if($silent_launcher || $no_status_update){ 
 		return;
 	}
 	print "									\r";
