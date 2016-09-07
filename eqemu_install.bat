@@ -98,7 +98,7 @@ IF EXIST "vcredist_x86.exe" (
 	del vcredist_x86.exe
 )
 
-C:\Perl\bin\perl.exe eqemu_server.pl installer
+C:\Perl\bin\perl.exe eqemu_server.pl new_install
 
 pause
 
