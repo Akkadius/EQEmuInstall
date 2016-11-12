@@ -167,7 +167,7 @@ while(1){
 	if(!$print_status_once){
 		#::: Loginserver Process
 		if($use_loginserver){	
-			for($i = $loginserver_process_count; $i < 1; $i++){ 
+			for($i = $loginserver_process_count; $i < 2; $i++){
 				system("./loginserver " . $pipe_redirection . " "  . $background_start); 
 				$loginserver_process_count++;
 				print_status(); 
