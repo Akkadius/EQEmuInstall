@@ -47,7 +47,7 @@ while($ARGV[$n]){
 }
 
 if($kill_server == 0 && $print_status_once == 0){ 
-	$l_processes = `ps -aux`;
+	$l_processes = `ps aux`;
 	my @processes = split("\n", $l_processes);
 	foreach my $val (@processes){
 		@data = split(" ", $val);
@@ -62,7 +62,7 @@ if($kill_server == 0 && $print_status_once == 0){
 }
 
 if(!$print_status_once && $kill_server){
-	$l_processes = `ps -aux`;
+	$l_processes = `ps aux`;
 	my @processes = split("\n", $l_processes);
 	foreach my $val (@processes){
 		@data = split(" ", $val);
@@ -142,7 +142,7 @@ while(1){
 	$ucs_process_count = 0;
 	$loginserver_process_count = 0;
 
-	$l_processes = `ps -aux`;
+	$l_processes = `ps aux`;
 	my @processes = split("\n", $l_processes);
 	foreach my $val (@processes){
 		if($val=~/ucs/i){
