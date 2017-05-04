@@ -98,6 +98,8 @@ IF NOT EXIST "eqemu_config.xml" GOTO GET_EQEMU_UPDATE
 IF EXIST "vcredist_x86.exe" (
 	echo Installing 'vcredist_x86.exe'...
 	vcredist_x86.exe /passive /norestart
+	echo Installing 'Visual C++ Redistributable for Visual Studio 2012 Update 4'
+	vcredist_x86_2012.exe /passive /norestart
 	del vcredist_x86.exe
 )
 
