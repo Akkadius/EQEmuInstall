@@ -101,6 +101,7 @@ IF EXIST "vcredist_x86.exe" (
 	echo Installing 'Visual C++ Redistributable for Visual Studio 2012 Update 4'
 	vcredist_x86_2012.exe /passive /norestart
 	del vcredist_x86.exe
+	del vcredist_x86_2012.exe
 )
 
 C:\Perl\bin\perl.exe eqemu_server.pl new_server
