@@ -1,0 +1,5 @@
+# For Windows - Do not change these
+mysql_root:eqemu
+mysql_eqemu_db_name:peq
+mysql_eqemu_user:root
+mysql_eqemu_password:eqemu
