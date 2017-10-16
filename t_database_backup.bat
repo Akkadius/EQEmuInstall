@@ -1,5 +1,5 @@
 @echo off
-perl eqemu_update.pl db_dump_compress
+perl eqemu_server.pl backup_database_compressed
 echo Database backup should be contained in backups folder...
 explorer backups
 pause
