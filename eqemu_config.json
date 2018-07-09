@@ -15,12 +15,12 @@
 			"db": "peq"
 		},
 		"chatserver": {
-			"port": "7500",
+			"port": "7778",
 			"host": ""
 		},
 		"mailserver": {
 			"host": "",
-			"port": "7500"
+			"port": "7778"
 		},
 		"webinterface": {
 			"port": "9081"
