@@ -1,0 +1,63 @@
+{
+	"server": {
+		"zones": {
+			"defaultstatus": "0",
+			"ports": {
+				"low": "7000",
+				"high": "7400"
+			}
+		},
+		"qsdatabase": {
+			"host": "mariadb",
+			"port": "3306",
+			"username": "eqemu",
+			"password": "eqemu",
+			"db": "peq"
+		},
+		"chatserver": {
+			"port": "7778",
+			"host": ""
+		},
+		"mailserver": {
+			"host": "",
+			"port": "7778"
+		},
+		"webinterface": {
+			"port": "9081"
+		},
+		"world": {
+			"loginserver1": {
+				"account": "",
+				"password": "",
+				"legacy": "1",
+				"host": "login.eqemulator.net",
+				"port": "5998"
+			},
+			"loginserver2": {
+				"port": "5998",
+				"account": "",
+				"password": "",
+				"host": "127.0.0.1"
+			},
+			"tcp": {
+				"ip": "0.0.0.0",
+				"port": "9001"
+			},
+			"telnet": {
+				"ip": "0.0.0.0",
+				"port": "9000",
+				"enabled": "true"
+			},
+			"key": "somelongrandomstring12345asdfffff",
+			"shortname": "Akkas Docker PEQ Installer",
+			"longname": "Akkas Docker PEQ Installer"
+		},
+		"database": {
+			"db": "peq",
+			"host": "mariadb",
+			"port": "3306",
+			"username": "eqemu",
+			"password": "eqemu"
+		}
+	}
+}
