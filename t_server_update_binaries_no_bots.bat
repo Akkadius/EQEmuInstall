@@ -1,0 +1,1 @@
+perl eqemu_server.pl windows_server_latest
