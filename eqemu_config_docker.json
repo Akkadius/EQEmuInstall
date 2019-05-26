@@ -50,7 +50,8 @@
 			},
 			"key": "somelongrandomstring12345asdfffff",
 			"shortname": "Akkas Docker PEQ Installer",
-			"longname": "Akkas Docker PEQ Installer"
+			"longname": "Akkas Docker PEQ Installer",
+			"localaddress": "127.0.0.1"
 		},
 		"database": {
 			"db": "peq",
