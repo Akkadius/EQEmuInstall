@@ -21,10 +21,7 @@
     "mailserver": {
       "host": "",
       "port": "7778"
-    },
-    "webinterface": {
-      "port": "9081"
-    },
+    }
     "world": {
       "loginserver1": {
         "account": "",
