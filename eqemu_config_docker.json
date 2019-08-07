@@ -56,6 +56,14 @@
       "port": "3306",
       "username": "eqemu",
       "password": "eqemu"
+    },
+    "files": {
+      "opcodes": "assets/opcodes/opcodes.conf",
+      "mail_opcodes": "assets/opcodes/mail_opcodes.conf"
+    },
+    "directories": {
+      "patches": "assets/patches/",
+      "opcodes": "assets/opcodes/"
     }
   }
 }
