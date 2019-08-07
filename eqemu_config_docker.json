@@ -21,7 +21,7 @@
     "mailserver": {
       "host": "",
       "port": "7778"
-    }
+    },
     "world": {
       "loginserver1": {
         "account": "",
