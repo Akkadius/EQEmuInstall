@@ -57,6 +57,7 @@
       "username": "eqemu",
       "password": "eqemu"
     },
+    // File Locations
     "files": {
       "opcodes": "assets/opcodes/opcodes.conf",
       "mail_opcodes": "assets/opcodes/mail_opcodes.conf"
