@@ -150,19 +150,19 @@ while (1) {
     $l_processes = `ps aux`;
     my @processes = split("\n", $l_processes);
     foreach my $val (@processes) {
-        if ($val =~ /ucs/i) {
+        if ($val =~ /\.\/ucs/i) {
             $ucs_process_count++;
         }
-        if ($val =~ /world/i) {
+        if ($val =~ /\.\/world/i) {
             $world_process_count++;
         }
-        if ($val =~ /zone/i) {
+        if ($val =~ /\.\/zone/i) {
             $zone_process_count++;
         }
-        if ($val =~ /queryserv/i) {
+        if ($val =~ /\.\/queryserv/i) {
             $queryserv_process_count++;
         }
-        if ($val =~ /loginserver/i) {
+        if ($val =~ /\.\/loginserver/i) {
             $loginserver_process_count++;
         }
     }
