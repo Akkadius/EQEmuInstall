@@ -56,23 +56,7 @@ echo #########################################################
 cd "%~dp0" 
 %~d0%
 
-SET has_winrar=0
-
-IF EXIST "%ProgramFiles(x86)%\WinRAR" (
-	SET has_winrar=1
-	REM echo WinRAR Exists... 32-Bit
-)
-IF EXIST "%ProgramFiles%\WinRAR" (
-	SET has_winrar=1
-	REM echo WinRAR Exists... 64-Bit
-)
-IF %has_winrar% == 0 (
-	echo Installing WinRAR...
-	WinRARSetup.exe /S
-	del WinRARSetup.exe
-)
-
-IF NOT EXIST "C:\Perl\bin" (
+IF NOT EXIST "C:\Perl64\bin" (
 	GOTO :INSTALL_PERL
 )
 
@@ -84,27 +68,24 @@ IF NOT EXIST "C:\Program Files\MariaDB 10.0" (
 :GET_EQEMU_UPDATE
 IF NOT EXIST "eqemu_server.pl" (
 	echo Fetching 'eqemu_server.pl'...
-	C:\Perl\bin\perl.exe -MLWP::UserAgent -e "require LWP::UserAgent;  my $ua = LWP::UserAgent->new; $ua->timeout(10); $ua->env_proxy; my $response = $ua->get('https://raw.githubusercontent.com/EQEmu/Server/master/utils/scripts/eqemu_server.pl'); if ($response->is_success){ open(FILE, '> eqemu_server.pl'); print FILE $response->decoded_content; close(FILE); }
+	C:\Perl64\bin\perl.exe -MLWP::UserAgent -e "require LWP::UserAgent;  my $ua = LWP::UserAgent->new; $ua->timeout(10); $ua->env_proxy; my $response = $ua->get('https://raw.githubusercontent.com/EQEmu/Server/master/utils/scripts/eqemu_server.pl'); if ($response->is_success){ open(FILE, '> eqemu_server.pl'); print FILE $response->decoded_content; close(FILE); }
 )
 IF NOT EXIST "eqemu_server.pl" GOTO GET_EQEMU_UPDATE
 
 :GET_EQEMU_CONFIG
-IF NOT EXIST "eqemu_config.xml" (
-	echo Fetching 'eqemu_config.xml'...
-	C:\Perl\bin\perl.exe -MLWP::UserAgent -e "require LWP::UserAgent;  my $ua = LWP::UserAgent->new; $ua->timeout(10); $ua->env_proxy; my $response = $ua->get('https://raw.githubusercontent.com/Akkadius/EQEmuInstall/master/eqemu_config.xml'); if ($response->is_success){ open(FILE, '> eqemu_config.xml'); print FILE $response->decoded_content; close(FILE); }
+IF NOT EXIST "eqemu_config.json" (
+	echo Fetching 'eqemu_config.json'...
+	C:\Perl64\bin\perl.exe -MLWP::UserAgent -e "require LWP::UserAgent;  my $ua = LWP::UserAgent->new; $ua->timeout(10); $ua->env_proxy; my $response = $ua->get('https://raw.githubusercontent.com/Akkadius/EQEmuInstall/master/eqemu_config.json'); if ($response->is_success){ open(FILE, '> eqemu_config.json'); print FILE $response->decoded_content; close(FILE); }
 )
-IF NOT EXIST "eqemu_config.xml" GOTO GET_EQEMU_UPDATE
+IF NOT EXIST "eqemu_config.json" GOTO GET_EQEMU_UPDATE
 
-IF EXIST "vcredist_x86.exe" (
-	echo Installing 'vcredist_x86.exe'...
-	vcredist_x86.exe /passive /norestart
-	echo Installing 'Visual C++ Redistributable for Visual Studio 2012 Update 4'
-	vcredist_x86_2012.exe /passive /norestart
-	del vcredist_x86.exe
-	del vcredist_x86_2012.exe
+IF EXIST "VC_redist.x64.exe" (
+	echo Installing 'VC_redist.x64.exe'...
+	VC_redist.x64.exe /passive /norestart
+	del VC_redist.x64.exe
 )
 
-C:\Perl\bin\perl.exe eqemu_server.pl new_server
+C:\Perl64\bin\perl.exe eqemu_server.pl new_server
 
 pause
 
@@ -112,15 +93,13 @@ GOTO :EXIT
 
 :INSTALL_PERL
 	echo Installing Perl... LOADING... PLEASE WAIT...
-	start /wait msiexec /i ActivePerl-5.12.3.1204-MSWin32-x86-294330.msi PERL_PATH="Yes" /q
-	"C:\Program Files (x86)\WinRAR\unrar" x -o- Perl.rar C:\
-	del ActivePerl-5.12.3.1204-MSWin32-x86-294330.msi
-	del Perl.rar
-	SET PATH=%path%;C:\Perl\site\bin
-	SET PATH=%path%;C:\Perl\bin
+	start /wait msiexec /i ActivePerl-5.16.3.1604-MSWin32-x64-298023.msi PERL_PATH="Yes" /q
+	del ActivePerl-5.16.3.1604-MSWin32-x64-298023.msi
+	SET PATH=%path%;C:\Perl64\site\bin
+	SET PATH=%path%;C:\Perl64\bin
 	
 	assoc .pl=Perl
-	ftype Perl="C:\Perl\bin\perl.exe" %%1 %%* 
+	ftype Perl="C:\Perl64\bin\perl.exe" %%1 %%* 
 	
 	GOTO :MAIN
 	
