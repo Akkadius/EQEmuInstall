@@ -93,8 +93,8 @@ GOTO :EXIT
 
 :INSTALL_PERL
 	echo Installing Perl... LOADING... PLEASE WAIT...
-	start /wait msiexec /i ActivePerl-5.16.3.1604-MSWin32-x64-298023.msi PERL_PATH="Yes" /q
-	del ActivePerl-5.16.3.1604-MSWin32-x64-298023.msi
+	start /wait msiexec /i strawberry-perl-5.24.4.1-64bit.msi PERL_PATH="Yes" /q
+	del strawberry-perl-5.24.4.1-64bit.msi
 	SET PATH=%path%;C:\Perl64\site\bin
 	SET PATH=%path%;C:\Perl64\bin
 	
