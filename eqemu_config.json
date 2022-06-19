@@ -37,12 +37,24 @@
 		},
 		"world": {
 			"key": "SomeRandomString",
-			"loginserver": {
+			"loginserver1": {
 				"account": "",
 				"host": "login.projecteq.net",
 				"password": "",
 				"port": "5998"
 			},
+			"loginserver2": {
+				"account": "",
+				"host": "login.eqemulator.net",
+				"password": "",
+				"port": "5998"
+			},
+			"loginserver3": {
+				"account": "",
+				"host": "127.0.0.1",
+				"password": "",
+				"port": "5998"
+			},			
 			"longname": "Akkas PEQ Installer",
 			"shortname": "Akkas PEQ Installer",
 			"localaddress": "127.0.0.1",
